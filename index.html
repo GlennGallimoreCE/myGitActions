@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial scale=1.0, maximum0scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie-edge">
+		<title>Glenn Gallimore Cloud Resume</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="https://cdnjs.cloudflare.com/ajax/libs/normalize.7.0.0/normalize.min.css">
+		<link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11/2/css/all.css">
+		<script async src="https://api.countapi.xyz/hit/ggallimore-cv.com/883bba01-adea-4d86-bdd0-5d90ac4428bf?callback=websiteVisits"></script>
+	</head>
+
+<body>
+<!--fixed banner-->
+<div class="box-area">
+	<header>
+		<div class="wrapper">
+			<div class="logo">
+				<div class='box red'>
+				<a href="#">Glenn Gallimore</a>
+				</div>
+			</div>
+			<nav>
+
+				<a href="about.html">About Me</a>
+				<a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/glenn-gallimore-87997b139/">Linkedin</a>
+				<a href="crc_journey.html">Blog</a>
+				<a href="projects.html">Projects</a>
+			</nav>
+		</div>
+	</header>
+
+
+<!--Fixed banner end-->
+
+
+	<!--image slider star-->
+	<div class="slideshow">
+			<!--radio buttons start-->
+		<div class="slideshow-item">
+				<img src="resume images/arizonawilds.png" alt="">
+				<div class="slideshow-item-text">
+					<h5>Aspiring Cloud Engineer</h5>
+					<p>Currently working at Creative Care as an IT Technician II/Networking Jr (3.5 YOE). At a few nursing care/phramacy/rehab facilities in Kingman, Arizona and Bullhead City, Arizona.</p>
+				</div>
+			</div>
+		<div class="slideshow-item">
+				<img src="resume images/serverroom.png" alt="">
+				<div class="slideshow-item-text">
+					<h5>Current Experience</h5>
+					<p> -Windows support including, Office/Skype 2016</p>
+					<p> -Hardware support for PCs, Laptops, Printers, Phones, etc.</p>
+					<p> -Active Directory experience</p>
+					<p> -Microsoft Exchange experience</p>
+					<p> -Vshphere (VMWare) experience</p>
+					<p> -Layer 7 firewall and Email filtering</p>
+					<p> -Telecom, TCP/IP, and Switch configuration</p>
+					<p> -Security using AVG server, Sentinel One, Bitlocker, Lojack</p>
+					<p> -Several web application inhouse support</p>
+					<p> -Entry Level Python scripting</p>
+					<p> -Entry level AWS Engineering (this website is hosted on AWS, and built by myself on this platform!)</p>
+				</div>
+			</div>
+		<div class="slideshow-item">
+				<img src="resume images/owls.png" alt="">
+				<div class="slideshow-item-text">
+					<h5>Education</h5>
+					<p>-Bachelor's of Computer Science - Art Institute of Pittsburg (2008)</p>
+					<p>-CompTIA Network+ (2021)</p>
+					<p>-CompTIA Security+ (2021)</p>
+					<p>-CompTIA Linux+ (TBD)</p>
+					<p>-AWS Solutions Architect Associate (TBD)</p>
+				</div>
+			</div>
+		<div class="slideshow-item">
+				<img src="resume images/cityscapenight.png" alt="">
+				<div class="slideshow-item-text">
+					<h5>Additional Qualifications</h5>
+					<p>-Some experience using HTML, CSS, Javascript (As seen on this website)</p>
+					<p>-Documentation and Diagram design</p>
+					<p>-Project orientated</p>
+				</div>
+			</div>
+		<div class="slideshow-item">
+				<img src="resume images/veglasanga.png" alt="">
+				<div class="slideshow-item-text">
+					<h5>Projects and Activities</h5>
+					<p>-I have released a game in HTML5 on Steam: <a href="https://store.steampowered.com/app/386460/Baxters_Venture_Directors_Cut/">Baxter's Adventure</a></p>
+					<p>-Link to project blog (under construction, check back later!)
+				</div>
+			</div>
+			<!--slide images end-->
+
+	<footer>
+		<a href="mailto:glenngallimore@gmail.com" class="footer-link">glenngallimore@gmail.com</a>
+		<!--page counter + copyright script begin-->
+			<div class="counter">
+				<p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear())</script> -- Page Views <span id="record_count">0</p>
+					<!--page counter script end-->
+					<script src="script.js"></script>
+					<!-- this is for our script to call the API URL, which will trigger Lambda to update the count on DynamoDB-->
+					<script>
+							fetch('https://k4rpwgps50.execute-api.us-east-1.amazonaws.com/dev/')
+								.then(response => response.json())
+								.then((data) => {
+									document.getElementById('record_count').innerText = data.count
+								})
+					</script>
+					<!--API/Lambda/DynamoDB script end-->
+				</div>
+
+	</footer>
+</body>
+
+</html>

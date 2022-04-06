@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial scale=1.0, maximum0scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie-edge">
+		<title>Glenn Gallimore Cloud Resume</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="https://cdnjs.cloudflare.com/ajax/libs/normalize.7.0.0/normalize.min.css">
+		<link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11/2/css/all.css">
+		<script async src="https://api.countapi.xyz/hit/ggallimore-cv.com/883bba01-adea-4d86-bdd0-5d90ac4428bf?callback=websiteVisits"></script>
+	</head>
+
+<body>
+<!--fixed banner-->
+<div class="box-area">
+  	<header>
+  		<div class="wrapper">
+  			<div class="logo">
+  				<div class='box red'>
+  				      <a href="index.html">Glenn Gallimore</a>
+  				</div>
+  			</div>
+  			<nav>
+
+  				<a href="about.html">About Me</a>
+  				<a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/glenn-gallimore-87997b139/">Linkedin</a>
+  				<a href="#">Blog</a>
+  				<a href="projects.html">Projects</a>
+        </nav>
+  		</div>
+  	</header>
+</div>
+
+
+<article>
+<h2>The Cloud Resume Challenge!?</h2>
+<p>So, I guess this requires some explaination.  I want to learn as much Cloud infrastructure within my means.  There's far more to it since on the AWS side I'm starting to believe that it's also crucial that you know how to work in Linux, and to code.  However for me, since I have an active AWS account (This website is proof) I'm following the steps and blogging my journey as a means of documentation in case I forget some steps.</p>
+<p>You can go to their website here: <a href="https://cloudresumechallenge.dev/docs/the-challenge/aws/">The Cloud Resume Challenge for AWS.</a></p>
+<br>
+<h2>The first few steps are straightforward -- Set up AWS account, HTML, CSS</h2>
+<p>In my honest opinon, you don't need to do the CCP cert (or any cert first).  Reality is, that a cert gets you past HR screening.  It's not a golden ticket to a job unless you are fortuanately lucky or knew someone that can give you an 'in' with their company.</p>
+<br>
+<p>Yes, you will be required to use your card info since AWS will bill you for services used, though depending on WHICH services it's literally cents.</p>
+<p>HTML and CSS?  I already have years of experience using these but because of my location, it amounted to nothing since before COVID remote jobs were non-existant and Front-End entry level work required years of experience and possibly a leet-code challenge pre interview (which is overboard, but it is what it is.)</p>
+<br>
+<p>Since I've been more IT than programmer these past four years, my CSS skills faltered so I had to retrain myself but eventually I did catch on. I'm also using a free program called "ATOM" to create my main page, css, and .js sheets.  It's a nice way to get back in shape after being away from coding for so long</p>
+<p>I'd also advise creating a billing threshold alert incase you use a service that bills you more than what you expected</p>
+<br>
+<h2>Getting the website up in AWS</h2>
+<p>My favorite part, the "static website" step, I would say steps 4-6 is easier done differently.  Let me explain.</p>
+<p>So for starters, I needed to create an S3 bucket in AWS.  It's very important to name it the same as your domain.  Learned that the hard way the first time.  The nice fella from Youtube Be A Better Dev pointed this out in his tutorial.</p>
+<br>
+<p>Next, I needed to create/register a domain using Route 53 (It's DNS).  Purchases vary, but this cost is yearly.  Also had to create two additional alias names for redirection.</p>
+<p>My website still had a "Not Secure" warning by the URL, this is because I had to purchase certificates using AWS's Certificate Manager.  I ended up getting two, one for each DNS alias.  From there I needed to apply these to a CloudFront distribution to get my bucket to be HTTPS.</p>
+<br>
+<p>*Also a heads up, many webhosts allow you to update your files in realtime.  AWS, for whatever reason does not -- at least not 'directly' from what I can tell but I'd like to be corrected on this.  I had some spelling errors on my index.html page and I didn't see any editor.  And after setting my S3 bucket to the domain, deleting and reuploading index.html did NOT update.  So what gives?</p>
+<p>I learned, that you need to add the '/*' invalidation rule to your Cloudfront distrubution, since by default Cloudfront cache updates every 24 hours.  This might be to prevent downtime when taking out a webpage but seems like an oversight.</p>
+<br>
+<h2>Javacript, API, Lambda Fuctions, and Database?</h2>
+<p>Sorry I have a habit of doing these in chunks.  Java was easy once I found a code for a site counter as well as a copyright updater for the bottom of the page, though now it's asking me to put it on a database using API.</p>
+<p>At this point, I'm figuring out the cloud resume challenge website steps should not be followed in order... as you can see, there's a lot of setup involved for the next steps after Javascript.  Heck, even a later step tells us that we should have done all this through the AWS SAM CLI which I haven't been doing... so I'm going to die on this hill admitting that I just used the AWS interface.</p>
+<br>
+<p>I'd like to believe there is no WRONG way to do this challenge, but I'm sure they'll be "well you should have done it this way" and I'm just going to shrug.  That being said, a huge thank you to <a href="https://shishirkh.medium.com/guide-to-the-cloud-resume-challenge-part-3-dynamodb-api-gateway-and-lambda-functions-8fc039bc862b"> Shishirkh Khandelwal got me through this part.</a></p>
+<br>
+<p>His section he explains how to set up Dynamo DB, two unique Lambda functions to get and update my JS visitor count, and creating then testing your API!  It's not entirely handholding, but I was able to figure out a few things on my own.  A very helpful teaching session that took me all day to find.</p>
+<p>While his blog got me to set it up, I'm still struggling with getting the Javascript counter to communicate with the AWS functions.  I'll update when I find a solution, wish me luck!</p>
+</article>
+
+
+  <footer>
+	<a href="mailto:glenngallimore@gmail.com" class="footer-link">glenngallimore@gmail.com</a>
+		<!--page counter + copyright script begin-->
+			<div class="counter">
+				<p style="color:white">Copyright &copy; <script>document.write(new Date().getFullYear())</script> -- Page Views <span id="record_count">0</p>
+					<!--page counter script end-->
+					<script src="script.js"></script>
+					<!-- this is for our script to call the API URL, which will trigger Lambda to update the count on DynamoDB-->
+					<script>
+							fetch('https://k4rpwgps50.execute-api.us-east-1.amazonaws.com/dev/')
+								.then(response => response.json())
+								.then((data) => {
+									document.getElementById('record_count').innerText = data.count
+								})
+					</script>
+					<!--API/Lambda/DynamoDB script end-->
+				</div>
+
+	</footer>
+</body>
+</html>
