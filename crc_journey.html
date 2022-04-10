@@ -35,6 +35,7 @@
 
 <article>
 <h2>The Cloud Resume Challenge!? 3/25/2022</h2>
+<br>
 	<p>So, I guess this requires some explaination.  I want to learn as much Cloud infrastructure within my means.  There's far more to it since on the AWS side I'm starting to believe that it's also crucial that you know how to work in Linux, and to code.  However for me, since I have an active AWS account (This website is proof) I'm following the steps and blogging my journey as a means of documentation in case I forget some steps.</p>
 	<p>You can go to their website here: <a href="https://cloudresumechallenge.dev/docs/the-challenge/aws/">The Cloud Resume Challenge for AWS.</a></p>
 <br>
@@ -48,6 +49,7 @@
 	<p>I'd also advise creating a billing threshold alert incase you use a service that bills you more than what you expected</p>
 <br>
 <h2>Getting the website up in AWS</h2>
+<br>
 	<p>My favorite part, the "static website" step, I would say steps 4-6 is easier done differently.  Let me explain.</p>
 	<p>So for starters, I needed to create an S3 bucket in AWS.  It's very important to name it the same as your domain.  Learned that the hard way the first time.  The nice fella from Youtube Be A Better Dev pointed this out in his tutorial.</p>
 <br>
@@ -58,6 +60,7 @@
 	<p>I learned, that you need to add the '/*' invalidation rule to your Cloudfront distrubution, since by default Cloudfront cache updates every 24 hours.  This might be to prevent downtime when taking out a webpage but seems like an oversight.</p>
 <br>
 <h2>Javacript, API, Lambda Fuctions, and Database?</h2>
+<br>
 	<p>Sorry I have a habit of doing these in chunks.  Java was easy once I found a code for a site counter as well as a copyright updater for the bottom of the page, though now it's asking me to put it on a database using API.</p>
 	<p>At this point, I'm figuring out the cloud resume challenge website steps should not be followed in order... as you can see, there's a lot of setup involved for the next steps after Javascript.  Heck, even a later step tells us that we should have done all this through the AWS SAM CLI which I haven't been doing... so I'm going to die on this hill admitting that I just used the AWS interface.</p>
 <br>
@@ -69,16 +72,25 @@
 	<p>After some struggle, I think I was able to get this working though some instances I see the counter display as 0.  A page refresh fixes it though.</p>
 <br>
 <h2>The CI/CD pipeline 4/10/2022</h2>
+<br>
 	<p>This part completely stumped me.  I have Github set up, but unsure how to get my S3 bucket to "talk" to Github when a commit webpage updates.  Eventually I found a video which he sets up his pipeline using AWS's CodePipeline feature.  Now unfortunately this I also didn't set up using the SAM CLI, unsure how to do this at this time, so it's back to clicking around the AWS interface for me.</p>
+<br>
 	<p>Which is fine, since I'm still a beginner at this stage.  So eventually I found out how to put one together after some trial and error.  With all the constant changes AWS makes to it's own website, every video or blog I came across were slightly outdated.</p>
+<br>	
 	<p>For starters, for "action providers" you have THREE options for Github: v1, v2, enterprise.  Since I'm not a business (I'm assuming enterprise = business), I chose v2 and used the "Connect to Github" button</p>
+<br>
 	<p>The Repository was straightforward, branch is called "main", where I'm guessing "master" was the former (remember when the tech industry wanted to do away with 'master' & 'slave'?  I wonder if that had something to do with it?)</p>
+<br>
 	<p>That was just the Source settings, for Deploy I didn't have an option to choose CloudFront, so I chose S3.  I thought I needed a deployment path, but after finding out I just needed to check the "Extract file before deploy" and erase the variable namespace (which is optional anyway) then going back to my GitHub repository, committing, then going back to CodePipeline and clicking on "Release Change" all my S3 items updated when checking the dates! </p>
+<br>
 	<p>The downside, is with CloudFront and it's settings to update in realtime it still takes a while for the domain to update after the website changes.  So I need to ask around why that is.</p>
 <br>
 	<h2>What have I learned?</h2>
+<br>
 	<p>Well, I have way more to understand about AWS.  My only regret was not utilizing the SAM CLI.  I think there is a way to still do so with my current setup, but perhaps I can make up for it in another project.  If you see the links above, that's going to be my next thing.</p>
+<br>
 	<p>What are my next projects?  I'm debating on something with data pipelines, or automating deployment.  I have to keep it on the cheap since I'd rather not gain a hefty bill.  This website so far after the domain might run me around a dollar a month, though if the free tier does expire later this year I worry how much it's really going to set me back to keep this running.</p>
+<br>
 	<p>Only time will tell I guess.  Thank you for taking the time to read my rambles, hope my experience will help you on your resume challenge.</p>
 	
 	
