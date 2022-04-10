@@ -238,7 +238,15 @@ header {
 .hamburger::before {top: 6px;}  
 .hamburger::after {bottom: 6px;}  
 
+/* projects */
 
+.projects {
+	position: relative;
+	display: inline;
+	text-align: center;
+	max-width: 500px;
+	margin: 0 auto;
+}
 
 
 /* intro section */
